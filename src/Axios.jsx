@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react"
-import Axios from "./Axios"
-import "./App.css"
-function App() {
- 
-  const [criptos, setCriptos] = useState() 
+import axios from "axios"
 
-  const API_URL = import.meta.env.VITE_API_URL
+function Axios() {
+ 
+    const [criptos, setCriptos] = useState() 
+
+    const API_URL = import.meta.env.VITE_API_URL
+    
 
   useEffect(() => {
-      fetch(`${API_URL}assets`)
-      .then((response) => response.json() )
-      .then((data) => { setCriptos(data.data);})
+      axios.get(`${API_URL}assets`)
+      .then((data) => { 
+        setCriptos(data.data.data)
+        //console.log(data.data.data)
+      })
       .catch(() => console.error("Error de carga, la peticion fallo"))
   }, [])
 
@@ -18,10 +21,7 @@ function App() {
 
   return (
     <>
-      <Axios/>
-      <hr />
-      <hr />
-     <h1>Lista de Criptomonedas</h1> 
+     <h1>AXIOS - Lista de Criptomonedas</h1> 
        <ol>
         {
         criptos.map(({name, priceUsd, id}) =>
@@ -32,4 +32,4 @@ function App() {
   )
 }
 
-export default App
+export default Axios
