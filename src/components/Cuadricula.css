@@ -1,0 +1,9 @@
+.cuadricula-container{
+   
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   border-style: solid;
+   border-width: 4px;
+    background-color: rgba(210, 105, 30, 0.671);
+}
